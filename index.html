@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Mi Amor 🤍</title>
+
+<style>
+body{
+    background-color:#05262c;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    padding:40px;
+    overflow:hidden;
+}
+
+/* BOTÓN SORPRESA */
+#sorpresaBtn{
+    background:linear-gradient(45deg,#ff4d6d,#ff9a9e);
+    color:white;
+    border:none;
+    padding:18px 40px;
+    font-size:20px;
+    border-radius:50px;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(255,77,109,0.9);
+    animation:latido 1.5s infinite;
+    margin-top:100px;
+}
+
+/* CONTENEDOR CARTA */
+.carta{
+    display:none;
+    background-image:url("./foto.jpg.jpeg");
+    background-size:cover;
+    background-position:center;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0px 0px 15px rgba(0,0,0,0.4);
+    max-width:650px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+    animation:aparecer 2s ease;
+}
+
+/* CAPA OSCURA */
+.contenido{
+    background:rgba(0,0,0,0.55);
+    padding:35px;
+    border-radius:15px;
+}
+
+h1{color:#ffb3d9;}
+
+.poema{
+    white-space:pre-line;
+    font-size:20px;
+    line-height:1.8;
+    color:white;
+    margin-top:20px;
+}
+
+/* BOTÓN MÚSICA */
+.boton-musica{
+    background:linear-gradient(45deg,#ff4d6d,#ff9a9e);
+    color:white;
+    border:none;
+    padding:14px 35px;
+    font-size:18px;
+    border-radius:50px;
+    cursor:pointer;
+    margin-top:20px;
+    box-shadow:0 0 15px rgba(255,77,109,0.8);
+}
+
+/* CORAZONES */
+.corazon{
+    position:fixed;
+    bottom:-50px;
+    font-size:24px;
+    animation:flotar 6s linear infinite;
+    color:#ffb3d9;
+    z-index:1;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-800px);opacity:0;}
+}
+
+@keyframes latido{
+    50%{transform:scale(1.1);}
+}
+
+@keyframes aparecer{
+    from{opacity:0;transform:scale(0.8);}
+    to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- BOTÓN INICIAL -->
+<button id="sorpresaBtn" onclick="mostrarCarta()">
+🤍 Toca para una sorpresa 🤍
+</button>
+
+<!-- CARTA -->
+<div class="carta" id="carta">
+<div class="contenido">
+
+<h1>Para mi chiquita brava 🤍</h1>
+
+<button class="boton-musica" onclick="document.getElementById('musica').play()">
+🎵 Reproducir música
+</button>
+
+<p class="poema">
+Mi chiquita brava,  
+
+Como te lo he dicho en las anteriores cartas,  
+eres una persona indispensable en mi vida  
+y le sigo agradeciendo a Dios  
+por colocarte en ella.  
+
+Sé que al principio fue un poquito complicado,  
+pero ahora trataré de dar lo mejor de mí  
+para ser la persona que necesitas en tu vida.  
+
+Te quiero mucho,  
+y no solo por la forma en la que me tratas,  
+sino por cómo me haces sentir  
+y querer cambiar  
+para construir algo lindo contigo 🤍.  
+
+Gracias por mostrarte tal cual eres ante mí,  
+y yo quiero hacer lo mismo contigo.  
+
+Te sigo recalcando que amo tanto tus ojitos  
+que me perdería en ellos  
+cada instante.  
+
+Me encanta que seas tan linda con los niños  
+y que seas tan transparente con ellos.  
+
+Amo tu nobleza,  
+tu forma ñera,  
+tus celos y reclamos.  
+
+Eres lo que necesitaba en mi vida  
+y no lo sabía,  
+pero ahora que te tengo  
+no te quiero perder  
+por nada del mundo.  
+
+Y quiero que te quede claro:  
+eres una persona valiosa  
+que se merece lo más lindo de esta vida  
+y más.  
+</p>
+
+<p class="poema">
+DE: Juliana  
+PARA: Michell
+</p>
+
+</div>
+</div>
+
+<!-- AUDIO -->
+<audio id="musica" loop>
+<source src="./musica.mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+function mostrarCarta(){
+    document.getElementById("sorpresaBtn").style.display="none";
+    document.getElementById("carta").style.display="block";
+    document.getElementById("musica").play();
+    lanzarCorazones();
+}
+
+function lanzarCorazones(){
+    setInterval(()=>{
+        const corazon=document.createElement("div");
+        corazon.className="corazon";
+        corazon.innerHTML="🤍";
+        corazon.style.left=Math.random()*100+"vw";
+        corazon.style.fontSize=(20+Math.random()*20)+"px";
+        document.body.appendChild(corazon);
+        setTimeout(()=>corazon.remove(),6000);
+    },400);
+}
+</script>
+
+</body>
+</html>
